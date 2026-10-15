@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل المنتج | BRITON</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="top-bar">🔒 تسوق بأمان وخصوصية تامة</div>
+
+  <header class="main-header">
+    <a href="/" class="logo">BRITON</a>
+    <nav class="main-nav">
+      <a href="/">الرئيسية</a>
+      <a href="/#products">المنتجات</a>
+      <a href="/#categories">التصنيفات</a>
+      <a href="/#offers">العروض</a>
+      <a href="/#contact">تواصل معنا</a>
+    </nav>
+    <div class="header-icons">
+      <a href="/favorites.html" class="icon-btn">❤️ <span class="badge" id="favCount">0</span></a>
+      <a href="/cart.html" class="icon-btn">🛒 <span class="badge" id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <div id="productDetail"></div>
+    <h2 class="section-title" style="margin-top:60px;">منتجات مقترحة</h2>
+    <div class="products-grid" id="relatedProducts"></div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-bottom">© 2026 BRITON - جميع الحقوق محفوظة</div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/cart.js"></script>
+  <script src="/js/favorites.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const productId = parseInt(params.get('id'));
+    loadProductDetail(productId);
+  </script>
+</body>
+</html>
