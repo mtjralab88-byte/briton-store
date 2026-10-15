@@ -1,0 +1,16 @@
+{
+  "name": "BRITON - متجر الألعاب والمستلزمات",
+  "short_name": "BRITON",
+  "description": "متجر إلكتروني فاخر لألعاب ومستلزمات الأزواج",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1628",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
