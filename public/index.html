@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#D4AF37">
+  <title>BRITON | متجر ألعاب ومستلزمات الأزواج</title>
+  <link rel="manifest" href="/manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-logo">BRITON</div>
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div class="top-bar">🔒 تسوق بأمان وخصوصية تامة</div>
+
+  <header class="main-header">
+    <a href="/" class="logo">BRITON</a>
+    <nav class="main-nav">
+      <a href="/">الرئيسية</a>
+      <a href="#products">المنتجات</a>
+      <a href="#categories">التصنيفات</a>
+      <a href="#offers">العروض</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="header-icons">
+      <button class="icon-btn" onclick="openSearch()">🔍</button>
+      <a href="/favorites.html" class="icon-btn">❤️ <span class="badge" id="favCount">0</span></a>
+      <a href="/cart.html" class="icon-btn">🛒 <span class="badge" id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <div id="searchModal" class="modal">
+    <div class="modal-content">
+      <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="searchProducts()">
+      <div id="searchResults"></div>
+      <button class="btn-close" onclick="closeSearch()">إغلاق</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">BRITON</h1>
+      <p class="hero-subtitle">عالم من المتعة والأناقة<br>ألعاب ومستلزمات الأزواج بخصوصية تامة</p>
+      <button class="btn-gold" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">تسوق الآن</button>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>الخصوصية التامة</h3>
+      <p>تغليف سري وبيانات محفوظة بأعلى معايير الأمان</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>سهولة الطلب</h3>
+      <p>اطلب في دقيقة واحدة عبر واتساب</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>خدمة عملاء 24/7</h3>
+      <p>فريق دعم متخصص لخدمتك في أي وقت</p>
+    </div>
+  </section>
+
+  <section class="categories" id="categories">
+    <h2 class="section-title">التصنيفات</h2>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </section>
+
+  <section class="products-section" id="products">
+    <h2 class="section-title">منتجاتنا</h2>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">الكل</button>
+      <button class="filter-btn" onclick="filterProducts('new', this)">جديد</button>
+      <button class="filter-btn" onclick="filterProducts('offer', this)">عروض</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <section class="offers-banner" id="offers">
+    <h2>🎁 عروض خاصة</h2>
+    <p>خصومات تصل إلى 40% على منتجات مختارة</p>
+    <button class="btn-gold" onclick="filterProducts('offer')">اكتشف العروض</button>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2 class="section-title">تواصل معنا</h2>
+    <div class="contact-grid">
+      <a href="https://wa.me/966XXXXXXXXX" class="contact-card" target="_blank">
+        <span>💬</span><h3>واتساب</h3><p>رد فوري</p>
+      </a>
+      <a href="mailto:info@briton.com" class="contact-card">
+        <span>✉️</span><h3>الإيميل</h3><p>info@briton.com</p>
+      </a>
+      <div class="contact-card">
+        <span>📞</span><h3>الجوال</h3><p>+966 XXX XXX XXX</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div>
+        <h3 class="logo-footer">BRITON</h3>
+        <p>متجرك الموثوق لألعاب ومستلزمات الأزواج</p>
+      </div>
+      <div>
+        <h4>روابط سريعة</h4>
+        <a href="/">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#contact">تواصل</a>
+      </div>
+      <div>
+        <h4>سياساتنا</h4>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">الاستبدال والاسترجاع</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 BRITON - جميع الحقوق محفوظة</div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/cart.js"></script>
+  <script src="/js/favorites.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
+    });
+  </script>
+</body>
+</html>
