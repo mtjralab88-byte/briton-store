@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إتمام الطلب | BRITON</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="top-bar">🔒 تسوق بأمان وخصوصية تامة</div>
+
+  <header class="main-header">
+    <a href="/" class="logo">BRITON</a>
+    <div class="header-icons">
+      <a href="/cart.html" class="icon-btn">🛒 <span class="badge" id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <h1 class="page-title">📝 إتمام الطلب</h1>
+
+    <div class="form-container">
+      <form id="checkoutForm" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label>الاسم الكامل *</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف *</label>
+          <input type="tel" id="phone" placeholder="05XXXXXXXX" required>
+        </div>
+        <div class="form-group">
+          <label>المدينة *</label>
+          <input type="text" id="city" required>
+        </div>
+        <div class="form-group">
+          <label>العنوان التفصيلي *</label>
+          <textarea id="address" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>ملاحظات إضافية</label>
+          <textarea id="notes" rows="2"></textarea>
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>عدد المنتجات:</span>
+            <span id="itemsCount">0</span>
+          </div>
+          <div class="summary-total">
+            <span>الإجمالي:</span>
+            <span id="totalPrice">0 ر.س</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-whatsapp">
+          💬 تأكيد الطلب عبر واتساب
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-bottom">© 2026 BRITON - جميع الحقوق محفوظة</div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/cart.js"></script>
+  <script>
+    if (cart.getCount() === 0) {
+      alert('السلة فارغة!');
+      location.href = '/cart.html';
+    }
+    document.getElementById('itemsCount').textContent = cart.getCount();
+    document.getElementById('totalPrice').textContent = cart.getTotal() + ' ر.س';
+
+    function submitOrder(e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        city: document.getElementById('city').value,
+        address: document.getElementById('address').value,
+        notes: document.getElementById('notes').value
+      };
+      checkoutWhatsApp(data);
+      setTimeout(() => {
+        cart.clear();
+        location.href = '/';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
